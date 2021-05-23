@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from apps.findprice.urls import accounts_urlpatterns
+from apps.findprice_account.urls import accounts_urlpatterns
+from apps.findprice.urls import products_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-urlpatterns += accounts_urlpatterns # add URLs for authentication
+urlpatterns += accounts_urlpatterns
+urlpatterns += products_urlpatterns

@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
+from rest_framework.routers import DefaultRouter
+from apps.findprice.views import ProductViewSet
 
-accounts_urlpatterns = [
-    url(r'^api/v1/', include('djoser.urls')),
-    url(r'^api/v1/', include('djoser.urls.authtoken')),
-]
+router = DefaultRouter()
+router.register("products", ProductViewSet, basename="products")
+products_urlpatterns = [url("api/v1/", include(router.urls))]

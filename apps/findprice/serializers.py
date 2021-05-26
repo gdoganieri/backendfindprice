@@ -12,3 +12,4 @@ class ProductSerializer(serializers.ModelSerializer):
             'category',
             'description'
         ]
+

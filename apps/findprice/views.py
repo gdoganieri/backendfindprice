@@ -1,12 +1,16 @@
+from apps.findprice.models import Product, CATEGORY_CHOICES, Scan
+from apps.findprice.serializers import ProductSerializer, ScanSerializer
+from django.http import JsonResponse
 from rest_framework import viewsets
-from apps.findprice.models import Product, CATEGORY_CHOICES
-from apps.findprice.serializers import ProductSerializer
-from django.http import HttpResponse, JsonResponse
-import json
+
 
 class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+
+class ScanViewSet(viewsets.ModelViewSet):
+    serializer_class = ScanSerializer
+    queryset = Scan.objects.all()
 
 
 def getCategory(request):

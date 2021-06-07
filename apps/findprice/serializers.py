@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from apps.findprice.models import Product
+from apps.findprice.models import Product, Scan
 
 class ProductSerializer(serializers.ModelSerializer):
 
@@ -13,3 +13,16 @@ class ProductSerializer(serializers.ModelSerializer):
             'description'
         ]
 
+
+class ScanSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Scan
+        fields = [
+            'product',
+            'scan_time',
+            'user',
+            'lat',
+            'long',
+            'price'
+        ]

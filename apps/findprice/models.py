@@ -29,8 +29,8 @@ class Scan(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = UserForeignKey(auto_user_add=True, blank = True, verbose_name="The user that is automatically assigned", related_name="mymodels")
     scan_time = models.DateTimeField(auto_now_add=True, blank= True)
-    lat = models.DecimalField(max_digits=9, decimal_places=7)
-    long = models.DecimalField(max_digits=9, decimal_places=7)
+    lat = models.DecimalField(max_digits=13, decimal_places=7)
+    long = models.DecimalField(max_digits=13, decimal_places=7)
     price = models.DecimalField(max_digits=9, decimal_places=2)
 
     def __str__(self):

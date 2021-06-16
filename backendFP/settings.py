@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -25,8 +24,7 @@ SECRET_KEY = 'django-insecure-@nzes5roomrx5(l1p(2qwg22-!+_g&&i*hi)qpu0$rp5_01g82
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.104', '127.0.0.1', '10.0.2.2']
-
+ALLOWED_HOSTS = ['10.0.2.2','127.0.0.1','192.168.1.246','192.168.1.24']
 
 # Application definition
 
@@ -37,6 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_userforeignkey',
+
     #
     'rest_framework',
     'rest_framework.authtoken',
@@ -46,16 +46,16 @@ INSTALLED_APPS = [
     'apps.findprice',
     #
     'corsheaders',
-    #
-    'django_userforeignkey',
 ]
 # define which origins are allowed
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
-
-#configure DRF
+# CORS_ALLOWED_ORIGIN_REGEXES = [
+#     r"^http:\/\/localhost:.*$",
+# ]
+# configure DRF
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -80,6 +80,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django_userforeignkey.middleware.UserForeignKeyMiddleware',
+
 ]
 
 ROOT_URLCONF = 'backendFP.urls'
@@ -103,7 +104,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backendFP.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -113,7 +113,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -133,7 +132,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -146,7 +144,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

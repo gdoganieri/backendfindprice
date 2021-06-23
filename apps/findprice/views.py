@@ -42,7 +42,7 @@ class getProductScan(viewsets.ModelViewSet):
     serializer_class = ProductsCatSerializer
 
     def get_queryset(self):
-        queryset = Product.objects.all()
+        queryset = Scan.objects.all()
         filter = self.request.query_params.get('filter')
         if filter is not None:
             filter= json.loads(filter)
@@ -50,7 +50,7 @@ class getProductScan(viewsets.ModelViewSet):
             long = filter['long']
             id = filter['id']
             dt = filter['dt']
-            queryset = queryset.filter( scan__lat__lte=float(lat)+0.5, scan__lat__gte=float(lat)-0.5,
-                                        scan__long__lte=float(long)+0.5, scan__long__gte=float(long)-0.5,
-                                        id=id, scan__scan_time__lte=dt)
+            queryset = queryset.filter( lat__lte=float(lat)+0.5, lat__gte=float(lat)-0.5,
+                                        long__lte=float(long)+0.5, long__gte=float(long)-0.5,
+                                        product=id, scan_time__lte=dt).order_by('-scan_time')[:10]
         return queryset

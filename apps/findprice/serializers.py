@@ -30,10 +30,12 @@ class ScanSerializer(serializers.ModelSerializer):
 class ProductsCatSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Product
+        model = Scan
         fields = [
-            'id',
-            'product_name',
-            'category',
-            'description'
+            'product',
+            'scan_time',
+            'user',
+            'lat',
+            'long',
+            'price'
         ]

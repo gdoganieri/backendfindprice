@@ -1,5 +1,5 @@
 from apps.findprice.models import Product, CATEGORY_CHOICES, Scan
-from apps.findprice.serializers import ProductSerializer, ScanSerializer, ProductsCatSerializer
+from apps.findprice.serializers import ProductSerializer, ScanSerializer, ProductsCatSerializer, ScansForProductSerializer
 from django.http import JsonResponse
 from rest_framework import viewsets, generics
 import json
@@ -27,19 +27,22 @@ def getCategory(request):
         return JsonResponse(categories, safe=False)
 
 
-class getProductsCat(viewsets.ModelViewSet):
+class getProductsSet(viewsets.ModelViewSet):
     # queryset = Product.objects.all()
     serializer_class = ProductsCatSerializer
 
     def get_queryset(self):
         queryset = Product.objects.all()
         category = self.request.query_params.get('cat')
+        id = self.request.query_params.get('id')
         if category is not None:
             queryset = queryset.filter(category=category)
+        if id is not None:
+            queryset = queryset.filter(id=id)
         return queryset
 
 class getProductScan(viewsets.ModelViewSet):
-    serializer_class = ProductsCatSerializer
+    serializer_class = ScansForProductSerializer
 
     def get_queryset(self):
         queryset = Scan.objects.all()

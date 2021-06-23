@@ -11,7 +11,8 @@ CATEGORY_CHOICES =  (
     ('alimenti', 'ALIMENTI'),
     ('giocattoli','GIOCATTOLI'),
     ('elettronica','ELETTRONICA'),
-    ('casa','CASA')
+    ('casa','CASA'),
+    ('giardino','GIARDINO')
 )
 
 

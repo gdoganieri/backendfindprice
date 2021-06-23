@@ -1,12 +1,12 @@
 from django.conf.urls import url, include
 from django.urls import path
 from rest_framework.routers import DefaultRouter
-from apps.findprice.views import ProductViewSet, getCategory, ScanViewSet, getProductsCat, getProductScan
+from apps.findprice.views import ProductViewSet, getCategory, ScanViewSet, getProductsSet, getProductScan
 
 router = DefaultRouter()
 router.register("products", ProductViewSet, basename="products")
 router.register("scans", ScanViewSet, basename="scans")
-router.register("category", getProductsCat, basename="category")
+router.register("prodFilt", getProductsSet, basename="prodFilt")
 router.register("prodScan", getProductScan, basename="prodScan")
 
 products_urlpatterns = [

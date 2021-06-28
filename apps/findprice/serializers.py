@@ -19,6 +19,7 @@ class ScanSerializer(serializers.ModelSerializer):
     class Meta:
         model = Scan
         fields = [
+            'id',
             'product',
             'scan_time',
             'user',
@@ -43,6 +44,7 @@ class ScansForProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Scan
         fields = [
+            'id',
             'product',
             'scan_time',
             'user',

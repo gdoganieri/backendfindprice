@@ -55,5 +55,5 @@ class getProductScan(viewsets.ModelViewSet):
             dt = filter['dt']
             queryset = queryset.filter( lat__lte=float(lat)+0.5, lat__gte=float(lat)-0.5,
                                         long__lte=float(long)+0.5, long__gte=float(long)-0.5,
-                                        product=id, scan_time__lte=dt).order_by('-scan_time')[:10]
+                                        product=id, scan_time__lt=dt).order_by('-scan_time')[:10]
         return queryset

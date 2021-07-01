@@ -63,12 +63,16 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+
+
 }
 
 # configure Djoser
 DJOSER = {
-    "USER_ID_FIELD": "username"
+    "USER_ID_FIELD": "username",
+    "PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND":True,
+    'PASSWORD_RESET_CONFIRM_URL': 'api/v1/users/reset_password/{uid}/{token}',
 }
 
 MIDDLEWARE = [
@@ -158,3 +162,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

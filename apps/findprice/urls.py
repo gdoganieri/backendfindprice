@@ -8,7 +8,7 @@ router.register("products", ProductViewSet, basename="products")
 router.register("scans", ScanViewSet, basename="scans")
 router.register("prodFilt", getProductsSet, basename="prodFilt")
 router.register("prodScan", getProductScan, basename="prodScan")
-
+router.register("users/reset_password", getResetPassword, basename="prodScan")
 products_urlpatterns = [
     url("api/v1/", include(router.urls)),
     path("categories", getCategory, name="get_category")

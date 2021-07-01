@@ -13,7 +13,7 @@ products_urlpatterns = [
     path("categories", getCategory, name="get_category"),
     path("api/v1/users/password_reset/<uidb64>/<token>/", auth_views.PasswordResetConfirmView.as_view(
              template_name='backendFP/registration/password_reset_confirm.html',
-            success_url = '/api/v1/token/login',
+            success_url = '/reset/done/',
          ),name='password_reset_confirm'),
-
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='backendFP/registration/password_reset_complete.html'), name='password_reset_complete'),
 ]

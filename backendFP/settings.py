@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     #
     'rest_framework',
     'rest_framework.authtoken',
@@ -72,7 +73,7 @@ REST_FRAMEWORK = {
 DJOSER = {
     "USER_ID_FIELD": "username",
     "PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND":True,
-    'PASSWORD_RESET_CONFIRM_URL': 'api/v1/users/reset_password/{uid}/{token}',
+    'PASSWORD_RESET_CONFIRM_URL': 'api/v1/users/password_reset/{uid}/{token}/',
 }
 
 MIDDLEWARE = [
@@ -163,4 +164,9 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'appfindprice@gmail.com'
+EMAIL_HOST_PASSWORD = 'ciaosiamofindprice'

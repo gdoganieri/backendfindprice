@@ -1,3 +1,4 @@
+import datetime
 import json
 
 import requests
@@ -58,7 +59,16 @@ class getProductScan(viewsets.ModelViewSet):
             long = filter['long']
             id = filter['id']
             dt = filter['dt']
-            queryset = queryset.filter(lat__lte=float(lat) + 0.5, lat__gte=float(lat) - 0.5,
-                                       long__lte=float(long) + 0.5, long__gte=float(long) - 0.5,
-                                       product=id, scan_time__lt=dt).order_by('-scan_time')[:10]
+            if(id== '*'):
+                print(id)
+                pdt = datetime.datetime.strptime(dt, "%Y-%m-%dT%H:%M:%S.%fZ") - datetime.timedelta(days=7)
+                queryset = queryset.filter(lat__lte=float(lat) + 0.5, lat__gte=float(lat) - 0.5,
+                    long__lte=float(long) + 0.5, long__gte=float(long) - 0.5,
+                    scan_time__lt=dt, scan_time__gt=pdt).order_by('-scan_time')
+            else:
+                queryset = queryset.filter(lat__lte=float(lat) + 0.5, lat__gte=float(lat) - 0.5,
+                                           long__lte=float(long) + 0.5, long__gte=float(long) - 0.5,
+                                           product=id, scan_time__lt=dt).order_by('-scan_time')[:10]
+
+
         return queryset
